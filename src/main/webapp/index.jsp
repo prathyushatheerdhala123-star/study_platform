@@ -259,7 +259,7 @@
 
   <section class="hero">
     <h1>Learn Smarter,<br/><span>Not Harder</span></h1>
-    <p>An intelligent study platform that adapts to your learning pace. Master any subject with personalized quizzes, progress tracking, and AI-powered recommendations.</p>
+    <p>An intelligent study platform that adapts to your learning pace. mfusdhfojadnfalj Master any subject with personalized quizzes, progress tracking, and AI-powered recommendations.</p>
     <div class="btn-group">
       <a href="#" class="btn btn-primary">Get Started Free</a>
       <a href="#" class="btn btn-outline">Explore Courses</a>
