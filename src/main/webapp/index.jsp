@@ -322,7 +322,7 @@
 <body>
 
   <nav>
-    <div class="logo">&lt;Prathyusha/&gt;</div>
+    <div class="logo">&lt;RupaGayatri/&gt;</div>
     <ul>
       <li><a href="#">Home</a></li>
       <li><a href="#">About</a></li>
@@ -431,7 +431,7 @@
       <div class="contact-card">
         <div class="icon">📧</div>
         <h4>Email</h4>
-        <p>prathyusha.theerdhala123@gmail.com</p>
+        <p>rupagayatri@gmail.com</p>
       </div>
       <div class="contact-card">
         <div class="icon">🎓</div>
@@ -441,13 +441,13 @@
       <div class="contact-card">
         <div class="icon">💻</div>
         <h4>GitHub</h4>
-        <p>prathyushatheerdhala123-star</p>
+        <p>rupagayatri</p>
       </div>
     </div>
   </section>
 
   <footer>
-    &copy; 2026 Gayatri &mdash; Built with Maven &amp; Deployed via Jenkins &amp; Tomcat
+    &copy; 2026 Rupa Gayatri &mdash; Built with Maven &amp; Deployed via Jenkins &amp; Tomcat
   </footer>
 
 </body>
