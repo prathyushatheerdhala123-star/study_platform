@@ -1,355 +1,453 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>StudyPlatform</title>
+  <title>Portfolio</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: #0f0c29;
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-      min-height: 100vh;
+      background: #0a0a0a;
       color: white;
     }
 
     nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 60px;
-      background: rgba(255,255,255,0.05);
+      padding: 20px 80px;
+      background: rgba(10,10,10,0.9);
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
     .logo {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #a78bfa;
-      letter-spacing: 1px;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #00ff88;
     }
-
-    .logo span { color: #fff; }
 
     nav ul {
       list-style: none;
       display: flex;
-      gap: 30px;
+      gap: 35px;
     }
 
     nav ul li a {
-      color: rgba(255,255,255,0.8);
+      color: rgba(255,255,255,0.7);
       text-decoration: none;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
       transition: color 0.3s;
     }
 
-    nav ul li a:hover { color: #a78bfa; }
+    nav ul li a:hover { color: #00ff88; }
 
     .hero {
-      text-align: center;
-      padding: 100px 20px 60px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0 80px;
+      background: radial-gradient(ellipse at 70% 50%, rgba(0,255,136,0.08) 0%, transparent 60%);
     }
 
-    .hero h1 {
-      font-size: 3.5rem;
-      font-weight: 800;
-      line-height: 1.2;
+    .hero-content { max-width: 650px; }
+
+    .hero-content .greeting {
+      color: #00ff88;
+      font-size: 1rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
       margin-bottom: 20px;
     }
 
-    .hero h1 span {
-      background: linear-gradient(90deg, #a78bfa, #60a5fa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .hero-content h1 {
+      font-size: 4rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 20px;
     }
 
-    .hero p {
-      font-size: 1.2rem;
-      color: rgba(255,255,255,0.65);
-      max-width: 600px;
-      margin: 0 auto 40px;
-      line-height: 1.7;
+    .hero-content h1 span { color: #00ff88; }
+
+    .hero-content .role {
+      font-size: 1.3rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 30px;
     }
 
-    .btn-group {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
+    .hero-content p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.8;
+      margin-bottom: 40px;
     }
+
+    .btn-group { display: flex; gap: 16px; }
 
     .btn {
       padding: 14px 36px;
-      border-radius: 50px;
-      font-size: 1rem;
+      border-radius: 4px;
+      font-size: 0.95rem;
       font-weight: 600;
       cursor: pointer;
       border: none;
-      transition: transform 0.2s, box-shadow 0.2s;
       text-decoration: none;
+      transition: all 0.3s;
+      letter-spacing: 0.5px;
     }
 
-    .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #a78bfa, #6d28d9);
-      color: white;
+    .btn-green {
+      background: #00ff88;
+      color: #0a0a0a;
     }
 
-    .btn-outline {
+    .btn-green:hover { background: #00cc6a; transform: translateY(-2px); }
+
+    .btn-ghost {
       background: transparent;
-      border: 2px solid rgba(255,255,255,0.4);
+      border: 1px solid rgba(255,255,255,0.3);
       color: white;
     }
 
-    .stats {
-      display: flex;
-      justify-content: center;
-      gap: 60px;
-      padding: 50px 20px;
-      flex-wrap: wrap;
+    .btn-ghost:hover { border-color: #00ff88; color: #00ff88; }
+
+    .about {
+      padding: 100px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      background: #0f0f0f;
     }
 
-    .stat { text-align: center; }
-
-    .stat h2 {
+    .about h2 {
       font-size: 2.5rem;
       font-weight: 800;
-      color: #a78bfa;
-    }
-
-    .stat p {
-      font-size: 0.95rem;
-      color: rgba(255,255,255,0.6);
-      margin-top: 4px;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .section-sub {
-      text-align: center;
-      color: rgba(255,255,255,0.55);
-      margin-bottom: 50px;
-      font-size: 1rem;
-    }
-
-    .courses {
-      padding: 60px 60px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-    }
-
-    .card {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 16px;
-      padding: 30px;
-      transition: transform 0.3s, background 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      background: rgba(167,139,250,0.15);
-    }
-
-    .card-icon {
-      font-size: 2.5rem;
-      margin-bottom: 16px;
-    }
-
-    .card h3 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.6);
-      line-height: 1.6;
       margin-bottom: 20px;
     }
 
-    .card-footer {
+    .about h2 span { color: #00ff88; }
+
+    .about p {
+      color: rgba(255,255,255,0.6);
+      line-height: 1.8;
+      margin-bottom: 16px;
+      font-size: 0.98rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .skill-item {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 16px 20px;
+    }
+
+    .skill-name {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.5);
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding-top: 16px;
+      margin-bottom: 10px;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.8);
     }
 
-    .badge {
-      background: linear-gradient(135deg, #a78bfa, #6d28d9);
-      color: white;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.78rem;
-      font-weight: 600;
+    .skill-name span:last-child { color: #00ff88; }
+
+    .skill-bar {
+      height: 4px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 2px;
+      overflow: hidden;
     }
 
-    .features {
-      padding: 60px;
-      background: rgba(255,255,255,0.02);
+    .skill-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #00ff88, #00cc6a);
+      border-radius: 2px;
     }
 
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 30px;
+    .projects {
+      padding: 100px 80px;
     }
 
-    .feature {
+    .section-header {
       text-align: center;
-      padding: 30px 20px;
+      margin-bottom: 60px;
     }
 
-    .feature-icon {
-      font-size: 2.8rem;
-      margin-bottom: 16px;
+    .section-header h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 12px;
     }
 
-    .feature h3 {
+    .section-header h2 span { color: #00ff88; }
+
+    .section-header p {
+      color: rgba(255,255,255,0.5);
+      font-size: 1rem;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      background: #0f0f0f;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: #00ff88;
+    }
+
+    .project-img {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+    }
+
+    .p1 { background: linear-gradient(135deg, #1a1a2e, #16213e); }
+    .p2 { background: linear-gradient(135deg, #0d1117, #161b22); }
+    .p3 { background: linear-gradient(135deg, #1a0a2e, #2d1b69); }
+
+    .project-info { padding: 24px; }
+
+    .project-info h3 {
       font-size: 1.1rem;
       font-weight: 700;
       margin-bottom: 10px;
     }
 
-    .feature p {
-      font-size: 0.88rem;
+    .project-info p {
       color: rgba(255,255,255,0.55);
+      font-size: 0.88rem;
       line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .tag {
+      background: rgba(0,255,136,0.1);
+      color: #00ff88;
+      border: 1px solid rgba(0,255,136,0.3);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+    }
+
+    .contact {
+      padding: 100px 80px;
+      background: #0f0f0f;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .contact h2 span { color: #00ff88; }
+
+    .contact p {
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 40px;
+      font-size: 1rem;
+    }
+
+    .contact-cards {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .contact-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 30px 40px;
+      transition: border-color 0.3s;
+    }
+
+    .contact-card:hover { border-color: #00ff88; }
+
+    .contact-card .icon { font-size: 2rem; margin-bottom: 12px; }
+
+    .contact-card h4 {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .contact-card p {
+      color: white;
+      font-size: 0.95rem;
+      margin: 0;
     }
 
     footer {
       text-align: center;
-      padding: 40px;
-      color: rgba(255,255,255,0.35);
-      font-size: 0.88rem;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 30px;
+      color: rgba(255,255,255,0.25);
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
     }
   </style>
 </head>
 <body>
 
   <nav>
-    <div class="logo">Study<span>Platform</span></div>
+    <div class="logo">&lt;Prathyusha/&gt;</div>
     <ul>
       <li><a href="#">Home</a></li>
-      <li><a href="#">Courses</a></li>
-      <li><a href="#">Practice</a></li>
-      <li><a href="#">Leaderboard</a></li>
       <li><a href="#">About</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">Contact</a></li>
     </ul>
   </nav>
 
   <section class="hero">
-    <h1>Learn Smarter,<br/><span>Not Harder</span></h1>
-    <p>An intelligent study platform that adapts to your learning pace. mfusdhfojadnfalj Master any subject with personalized quizzes, progress tracking, and AI-powered recommendations.</p>
-    <div class="btn-group">
-      <a href="#" class="btn btn-primary">Get Started Free</a>
-      <a href="#" class="btn btn-outline">Explore Courses</a>
+    <div class="hero-content">
+      <p class="greeting">👋 Hello, I'm</p>
+      <h1>Prathyusha<br/><span>Theerdhala</span></h1>
+      <p class="role">B.Tech IT Student &amp; Aspiring Developer</p>
+      <p>Passionate about building intelligent systems and web applications. Currently exploring DevOps, Machine Learning, and Full Stack Development.</p>
+      <div class="btn-group">
+        <a href="#" class="btn btn-green">View My Work</a>
+        <a href="#" class="btn btn-ghost">Contact Me</a>
+      </div>
     </div>
   </section>
 
-  <section class="stats">
-    <div class="stat"><h2>12,000+</h2><p>Active Students</p></div>
-    <div class="stat"><h2>350+</h2><p>Courses Available</p></div>
-    <div class="stat"><h2>98%</h2><p>Satisfaction Rate</p></div>
-    <div class="stat"><h2>50+</h2><p>Expert Instructors</p></div>
-  </section>
-
-  <section class="courses">
-    <h2 class="section-title">Popular Courses</h2>
-    <p class="section-sub">Pick up where your curiosity takes you</p>
-    <div class="cards">
-
-      <div class="card">
-        <div class="card-icon">🧮</div>
-        <h3>Mathematics</h3>
-        <p>From algebra to calculus — build a rock-solid foundation with step-by-step problem solving.</p>
-        <div class="card-footer">
-          <span>42 lessons</span>
-          <span class="badge">Beginner</span>
-        </div>
+  <section class="about">
+    <div>
+      <h2>About <span>Me</span></h2>
+      <p>I'm a second-year B.Tech Information Technology student at IARE, passionate about technology and problem-solving.</p>
+      <p>I've worked on projects involving Reinforcement Learning, intelligent tutoring systems, and now DevOps pipelines using Jenkins, Maven, and Tomcat.</p>
+      <p>I enjoy turning complex ideas into clean, working software.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-item">
+        <div class="skill-name"><span>Java</span><span>80%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
       </div>
-
-      <div class="card">
-        <div class="card-icon">⚡</div>
-        <h3>Physics</h3>
-        <p>Understand the laws of the universe through interactive simulations and real-world examples.</p>
-        <div class="card-footer">
-          <span>38 lessons</span>
-          <span class="badge">Intermediate</span>
-        </div>
+      <div class="skill-item">
+        <div class="skill-name"><span>Python</span><span>85%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
       </div>
-
-      <div class="card">
-        <div class="card-icon">🧪</div>
-        <h3>Chemistry</h3>
-        <p>Dive into atomic structure, reactions, and organic chemistry with visual explanations.</p>
-        <div class="card-footer">
-          <span>35 lessons</span>
-          <span class="badge">Intermediate</span>
-        </div>
+      <div class="skill-item">
+        <div class="skill-name"><span>DevOps</span><span>70%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
       </div>
-
-      <div class="card">
-        <div class="card-icon">💻</div>
-        <h3>Computer Science</h3>
-        <p>Learn programming, data structures, algorithms, and software development from scratch.</p>
-        <div class="card-footer">
-          <span>60 lessons</span>
-          <span class="badge">All Levels</span>
-        </div>
+      <div class="skill-item">
+        <div class="skill-name"><span>Machine Learning</span><span>75%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
       </div>
-
+      <div class="skill-item">
+        <div class="skill-name"><span>Web Dev</span><span>78%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name"><span>Git &amp; GitHub</span><span>82%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div>
+      </div>
     </div>
   </section>
 
-  <section class="features">
-    <h2 class="section-title">Why StudyPlatform?</h2>
-    <p class="section-sub">Everything you need to succeed, in one place</p>
-    <div class="feature-grid">
-      <div class="feature">
-        <div class="feature-icon">🤖</div>
-        <h3>AI-Powered Learning</h3>
-        <p>Our system adapts difficulty based on your performance, keeping you challenged but never overwhelmed.</p>
+  <section class="projects">
+    <div class="section-header">
+      <h2>My <span>Projects</span></h2>
+      <p>Things I've built and learned from</p>
+    </div>
+    <div class="project-grid">
+      <div class="project-card">
+        <div class="project-img p1">🤖</div>
+        <div class="project-info">
+          <h3>RL Intelligent Tutor</h3>
+          <p>A reinforcement learning based tutoring system that adapts question difficulty based on student performance using Q-Learning.</p>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Streamlit</span>
+            <span class="tag">Q-Learning</span>
+          </div>
+        </div>
       </div>
-      <div class="feature">
-        <div class="feature-icon">📊</div>
-        <h3>Progress Tracking</h3>
-        <p>Visual dashboards show your improvement over time, helping you stay motivated and on track.</p>
+      <div class="project-card">
+        <div class="project-img p2">⚙️</div>
+        <div class="project-info">
+          <h3>DevOps CI/CD Pipeline</h3>
+          <p>A complete CI/CD pipeline using Jenkins, Maven, Git, GitHub and Apache Tomcat to automate build and deployment.</p>
+          <div class="tags">
+            <span class="tag">Jenkins</span>
+            <span class="tag">Maven</span>
+            <span class="tag">Tomcat</span>
+          </div>
+        </div>
       </div>
-      <div class="feature">
-        <div class="feature-icon">🏆</div>
-        <h3>Gamified Experience</h3>
-        <p>Earn points, unlock badges, and compete on leaderboards to make learning genuinely fun.</p>
+      <div class="project-card">
+        <div class="project-img p3">🌐</div>
+        <div class="project-info">
+          <h3>Study Platform</h3>
+          <p>An adaptive web-based learning platform with subject-wise quizzes, difficulty levels, and real-time performance tracking.</p>
+          <div class="tags">
+            <span class="tag">Java</span>
+            <span class="tag">JSP</span>
+            <span class="tag">HTML/CSS</span>
+          </div>
+        </div>
       </div>
-      <div class="feature">
-        <div class="feature-icon">📱</div>
-        <h3>Study Anywhere</h3>
-        <p>Fully responsive design means you can learn from your phone, tablet, or laptop seamlessly.</p>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2>Get In <span>Touch</span></h2>
+    <p>Feel free to reach out for collaborations or just a friendly hello</p>
+    <div class="contact-cards">
+      <div class="contact-card">
+        <div class="icon">📧</div>
+        <h4>Email</h4>
+        <p>prathyusha.theerdhala123@gmail.com</p>
+      </div>
+      <div class="contact-card">
+        <div class="icon">🎓</div>
+        <h4>College</h4>
+        <p>IARE, Hyderabad</p>
+      </div>
+      <div class="contact-card">
+        <div class="icon">💻</div>
+        <h4>GitHub</h4>
+        <p>prathyushatheerdhala123-star</p>
       </div>
     </div>
   </section>
 
   <footer>
-    &copy; 2026 StudyPlatform &mdash; B.Tech IT Project &mdash; Built with Maven &amp; Deployed via Jenkins
+    &copy; 2026 Prathyusha Theerdhala &mdash; Built with Maven &amp; Deployed via Jenkins &amp; Tomcat
   </footer>
 
 </body>
