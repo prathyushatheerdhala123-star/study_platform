@@ -334,7 +334,7 @@
   <section class="hero">
     <div class="hero-content">
       <p class="greeting">👋 Hello, I'm</p>
-      <h1>Prathyusha<br/><span>Theerdhala</span></h1>
+      <h1>Rupa<br/><span>Gayatri</span></h1>
       <p class="role">B.Tech IT Student &amp; Aspiring Developer</p>
       <p>Passionate about building intelligent systems and web applications. Currently exploring DevOps, Machine Learning, and Full Stack Development.</p>
       <div class="btn-group">
