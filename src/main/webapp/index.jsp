@@ -152,7 +152,7 @@
 
   <section class="hero">
     <p class="tag">Available for work</p>
-    <h1>Designer &<br><span>Developer</span></h1>
+    <h1>Designer &<br><span>Developer Zavia</span></h1>
     <p>I build clean, fast, and thoughtful digital experiences. Based in San Francisco, working globally.</p>
     <button class="btn-outline">View my work</button>
   </section>
