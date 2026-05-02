@@ -447,7 +447,7 @@
   </section>
 
   <footer>
-    &copy; 2026 Prathyusha Theerdhala &mdash; Built with Maven &amp; Deployed via Jenkins &amp; Tomcat
+    &copy; 2026 Gayatri &mdash; Built with Maven &amp; Deployed via Jenkins &amp; Tomcat
   </footer>
 
 </body>
