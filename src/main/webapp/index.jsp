@@ -135,7 +135,7 @@
   </nav>
 
   <section class="hero">
-    <h1>Build something great</h1>
+    <h1>Hello IARE</h1>
     <p>A clean, minimal starting point for your next website. Edit this to make it your own.</p>
     <button class="btn btn-fill">Get started</button>
     <button class="btn">Learn more</button>
