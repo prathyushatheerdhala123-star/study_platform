@@ -322,7 +322,7 @@
 <body>
 
   <nav>
-    <div class="logo">&lt;RupaGayatri/&gt;</div>
+    <div class="logo">&lt;RupaGayatrifaguydaoiu/&gt;</div>
     <ul>
       <li><a href="#">Home</a></li>
       <li><a href="#">About</a></li>
